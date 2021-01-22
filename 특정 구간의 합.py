@@ -1,5 +1,0 @@
-int(input(''))
-numbers = map(int, input('').split())
-a, b = map(int, input('').split())
-numberz = list(numbers)
-print(sum(numberz[a-1:b]))
