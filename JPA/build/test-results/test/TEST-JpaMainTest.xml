@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="JpaMainTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-17T08:03:58" hostname="JungJunWooui-MacBookPro.local" time="0.022">
+  <properties/>
+  <testcase name="stream()" classname="JpaMainTest" time="0.022"/>
+  <system-out><![CDATA[i= 1, 조건= 짝수
+i= 2, 조건= 짝수
+중간다리
+i=2, 조건= 4이하
+i= 3, 조건= 짝수
+i= 4, 조건= 짝수
+중간다리
+i=4, 조건= 4이하
+i= 5, 조건= 짝수
+i= 6, 조건= 짝수
+중간다리
+i=6, 조건= 4이하
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
