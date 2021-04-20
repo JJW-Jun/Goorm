@@ -1,5 +1,7 @@
 package builderpattern.second;
 
+import org.springframework.util.Assert;
+
 public class ComputerBuilder {
 
 
@@ -20,6 +22,7 @@ public class ComputerBuilder {
     }
 
     public ComputerBuilder setCpu(String cpu) {
+        Assert.hasText(cpu, "cpu must not be empty");
         computer.setCpu(cpu);
         return this;
     }

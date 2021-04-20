@@ -1,7 +1,7 @@
 package builderpattern.first;
 
 
-public class BuilderPatternMain {
+public class FirstMain {
     public static void main(String args[]) {
         ComputerFactory factory = new ComputerFactory();
         factory.setBluePrint(new LgGramBlueprint());
