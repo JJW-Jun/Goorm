@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 @Repository
 public class MemberRepository {
     // componentscan 대상
-
     // EntityManagert생성이 Spring Data-JPA
     @PersistenceContext
     private EntityManager em;

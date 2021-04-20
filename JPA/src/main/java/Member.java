@@ -2,14 +2,14 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@TableGenerator(
-        name = "MEMBER_SEQ_GENERATOR",
-        table = "MY_SEQUENCES",
-        pkColumnValue = "MEMBER_SEQ",
-        allocationSize = 1)
+@SequenceGenerator(name = "MEMBER_SEQ_GENERATOR",
+        sequenceName = "MEMBER_SEQ",
+        initialValue = 1, allocationSize = 10
+)
 public class Member {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "MEMBER_SEQ_GENERATOR")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator = "MEMBER_SEQ_GENERATOR")
     private Long id;
 
     @Column(name = "name")
@@ -73,4 +73,3 @@ public class Member {
         this.description = description;
     }
 }
-
