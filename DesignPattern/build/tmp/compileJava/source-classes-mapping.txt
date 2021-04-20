@@ -2,15 +2,22 @@ builderpattern/first/LgGramBlueprint.java
  builderpattern.first.LgGramBlueprint
 builderpattern/first/BluePrint.java
  builderpattern.first.BluePrint
-builderpattern/first/BuilderPatternMain.java
- builderpattern.first.BuilderPatternMain
-builderpattern/first/ComputerFactory.java
- builderpattern.first.ComputerFactory
-builderpattern/first/Computer.java
- builderpattern.first.Computer
 builderpattern/second/SecondMain.java
  builderpattern.second.SecondMain
+builderpattern/first/ComputerFactory.java
+ builderpattern.first.ComputerFactory
+builderpattern/first/FirstMain.java
+ builderpattern.first.FirstMain
+builderpattern/practice/User.java
+ builderpattern.practice.User
+builderpattern/practice/CommonBuilder.java
+ builderpattern.practice.CommonBuilder
+builderpattern/first/Computer.java
+ builderpattern.first.Computer
 builderpattern/second/Computer.java
  builderpattern.second.Computer
 builderpattern/second/ComputerBuilder.java
  builderpattern.second.ComputerBuilder
+builderpattern/practice/UserDto.java
+ builderpattern.practice.UserDto
+ builderpattern.practice.UserDto$Builder
