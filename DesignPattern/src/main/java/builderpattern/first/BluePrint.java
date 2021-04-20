@@ -1,0 +1,10 @@
+package builderpattern.first;
+
+public abstract class BluePrint {
+
+    abstract void setCpu();
+    abstract void setRam();
+    abstract void setStorage();
+    abstract Computer getComputer();
+
+}
