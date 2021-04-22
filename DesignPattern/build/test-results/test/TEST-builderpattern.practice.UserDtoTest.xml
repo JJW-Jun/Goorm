@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="builderpattern.practice.UserDtoTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-20T23:18:41" hostname="JungJunWooui-MacBookPro.local" time="0.034">
+<testsuite name="builderpattern.practice.UserDtoTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-22T09:51:58" hostname="JungJunWooui-MacBookPro.local" time="0.012">
   <properties/>
-  <testcase name="dto()" classname="builderpattern.practice.UserDtoTest" time="0.034"/>
-  <system-out><![CDATA[UserDto(id=null, name=null, email=abcde@gmail.com, address=Busan, gender=Female, phoneNUmber=)
+  <testcase name="osrttt()" classname="builderpattern.practice.UserDtoTest" time="0.012"/>
+  <system-out><![CDATA[2021-04-16
+2021-04-09
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

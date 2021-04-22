@@ -11,11 +11,10 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import java.util.Collections;
 
-@Getter
-@Setter
+
+@Getter @Setter
 @ToString(exclude = {"password"})
 public class UserDto implements CommonBuilder {
-
 
     private Long id;
     private final String name;
@@ -26,7 +25,7 @@ public class UserDto implements CommonBuilder {
     private String phoneNUmber;
 
     @Override
-    public Object toEntity() {
+    public Object build() {
         return null;
     }
 
@@ -78,4 +77,5 @@ public class UserDto implements CommonBuilder {
         this.gender = builder.gender;
         this.phoneNUmber = builder.phoneNUmber;
     }
+
 }
