@@ -24,4 +24,7 @@ public class Member {
     // orderTable의 멤버엥 의해서. 나는 쟤에 의해서 맵핑될 뿐...
     private List<Order> orders = new ArrayList<>();
 
+
+
+
 }

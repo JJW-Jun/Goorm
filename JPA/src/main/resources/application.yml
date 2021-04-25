@@ -2,8 +2,8 @@
 #  datasource:
 #    url: jdbc:mariadb://localhost:3306/jpa
 #    driver-class-name: org.mariadb.jdbc.Driver
-#    username: jun
-#    password: tjgusskavys8*
+#    username:
+#    password: *
 #  jpa:
 #    database-platform: org.hibernate.dialect.MariaDB10Dialect
 #    open-in-view: true

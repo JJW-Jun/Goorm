@@ -1,3 +1,5 @@
+package search;
+
 import java.util.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -42,7 +44,7 @@ public class Boj1038 {
     }
 }
 
-//public class Boj1038 {
+//public class search.Boj1038 {
 //    public static void main(String args[]) {
 //        Scanner scanner = new Scanner(System.in);
 //        String number = scanner.nextLine();

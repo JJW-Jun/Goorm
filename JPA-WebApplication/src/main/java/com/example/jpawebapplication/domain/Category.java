@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 public class Category {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
     private Long id;
 
@@ -31,4 +31,9 @@ public class Category {
 
     @OneToMany(mappedBy = "parent")
     private List<Category> child = new ArrayList<>();
+
+    public void addChildCatergory(Category child) {
+        this.child.add(child);
+        child.setParent(this);
+    }
 }

@@ -1,3 +1,5 @@
+package search;
+
 import java.util.Scanner;
 
 class Boj1405 {

@@ -1,13 +1,11 @@
 package com.example.jpawebapplication;
 
-import com.example.jpawebapplication.domain.Member;
-import org.assertj.core.api.Assertions;
+import com.example.jpawebapplication.repository.MemberRepository;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
-import org.springframework.transaction.annotation.Transactional;
 
 @Commit
 @SpringBootTest(classes = JpaWebapplicationApplication.class)

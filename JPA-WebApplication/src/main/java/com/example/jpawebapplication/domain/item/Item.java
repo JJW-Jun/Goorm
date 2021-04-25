@@ -8,10 +8,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// Join이 가장 정석적
-@Entity
-@Getter
-@Setter
+@Entity @Getter @Setter
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "dtype")
 public abstract class Item {
@@ -24,7 +21,6 @@ public abstract class Item {
     private String name;
     private int price;
     private int stockQuantity;
-
 
     @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();

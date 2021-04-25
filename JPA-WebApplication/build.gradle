@@ -28,10 +28,13 @@ dependencies {
     implementation 'org.testng:testng:7.1.0'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.7.1'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 //JUnit4 추가
+
     testImplementation("org.junit.vintage:junit-vintage-engine") {
-        exclude group: "org.hamcrest", module: "hamcrest-core"
+        testCompile ('org.junit.jupiter:junit-jupiter:5.6.0')
+//        exclude group: "org.hamcrest", module: "hamcrest-core"
     }
 }
 test {
