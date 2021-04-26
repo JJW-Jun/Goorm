@@ -7,4 +7,5 @@ public class Ticket {
     public Long getFee() {
         return fee;
     }
+
 }
