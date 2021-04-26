@@ -11,12 +11,7 @@ class JpaMainTest {
     @Test
     void stream() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
         Class member =Class.forName("Member");
-        Member member1 = Member.class.newInstance();
 
-        System.out.println("====================");
-        System.out.println(member1.getName());
-        System.out.println(member.getName());
-        System.out.println("====================");
 //        List<Integer> integers = List.of(1, 2, 3, 4, 5, 6);
 //        integers.stream()
 //                .filter(i -> {

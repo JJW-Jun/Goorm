@@ -1,20 +1,24 @@
 import lombok.Data;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Entity @Data
 public class Team {
-    @Id
-    @GeneratedValue
-    @Column(name = "team_id")
+    @Id @GeneratedValue
+    @Column(name = "TEAM_ID")
     private Long id;
-
-    @Column
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "team")
     private List<Member> members = new ArrayList<>();
-    protected Team (){};
+
+    @Override
+    public String toString() {
+        return "Team{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
