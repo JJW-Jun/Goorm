@@ -8,6 +8,8 @@ chapter01/bad/Ticket.java
  chapter01.bad.Ticket
 chapter01/bad/TicketSeller.java
  chapter01.bad.TicketSeller
+chapter01/refactoring/case1/Bag.java
+ chapter01.refactoring.case1.Bag
 chapter01/good/Theater.java
  chapter01.good.Theater
 chapter01/good/Bag.java
@@ -52,5 +54,6 @@ chapter01/good/Ticket.java
  chapter01.good.Ticket
 chapter01/refactoring/case1/Invitation.java
  chapter01.refactoring.case1.Invitation
-chapter01/refactoring/case1/Bag.java
- chapter01.refactoring.case1.Bag
+MyBatisConfig.java
+ SearchService
+ Theater

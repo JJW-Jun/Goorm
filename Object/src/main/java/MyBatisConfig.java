@@ -25,7 +25,5 @@ public class MyBatisConfig {
     public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
-    public static void main(String args []){
 
-    }
 }
