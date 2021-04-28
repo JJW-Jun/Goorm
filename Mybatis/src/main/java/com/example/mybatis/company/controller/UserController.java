@@ -1,5 +1,6 @@
 package com.example.mybatis.company.controller;
 
+import com.example.mybatis.company.domain.Company;
 import com.example.mybatis.company.domain.UserDto;
 import com.example.mybatis.company.mapper.UserMapper;
 import org.slf4j.Logger;
@@ -22,9 +23,9 @@ public class UserController {
         return "return";
     }
     @PostMapping("")
-    public int post(@RequestBody UserDto userDto){
+    public int post(@RequestBody Company company){
         logger.info("========== User Insert ==========");
-        return companyMapper.insert(userDto);
+        return companyMapper.insert(company);
     }
 
 //    @GetMapping("/getAll")
