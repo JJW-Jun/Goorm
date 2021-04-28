@@ -4,8 +4,3 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
     username: jun
     password: *
-
-#  mybatis:
-#    type-aliases-package: com.example.mybatis.company.mapper
-#    mapper-locations: mybatis/mapper/**/*.xml
-#      ?userUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul

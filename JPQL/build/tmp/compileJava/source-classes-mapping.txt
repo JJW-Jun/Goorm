@@ -16,3 +16,5 @@ jpql/JpaMain.java
  jpql.JpaMain
 jpql/Requirenonnull.java
  jpql.Requirenonnull
+ jpql.SearchService
+ jpql.Theater
