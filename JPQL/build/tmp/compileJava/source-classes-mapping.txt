@@ -2,13 +2,17 @@ jpql/Product.java
  jpql.Product
 jpql/Order.java
  jpql.Order
-jpql/Member.java
- jpql.Member
+jpql/MemberDto.java
+ jpql.MemberDto
 jpql/Address.java
  jpql.Address
 jpql/Team.java
  jpql.Team
-jpql/MemberDto.java
- jpql.MemberDto
+jpql/MemberType.java
+ jpql.MemberType
+jpql/Member.java
+ jpql.Member
 jpql/JpaMain.java
  jpql.JpaMain
+jpql/Requirenonnull.java
+ jpql.Requirenonnull

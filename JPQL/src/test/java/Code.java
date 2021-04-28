@@ -18,4 +18,10 @@ public class Code {
 
         assertThat(memberA, is(equalTo(memberB)));
     }
+
+
+    @Test
+    void notNull(String str){
+        System.out.println(str);
+    }
 }

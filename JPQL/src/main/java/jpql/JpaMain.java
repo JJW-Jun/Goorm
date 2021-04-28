@@ -16,35 +16,16 @@ public class JpaMain {
             Member member = new Member();
             member.setUsername("memberC");
             member.setAge(20);
+            member.setType(MemberType.ADMIN);
             em.persist(member);
 
-            TypedQuery<Member> query = em.createQuery("select m from Member m where m.id = 1", Member.class);
-            Member result = query.getSingleResult();
-
+            String query = "select case when m.age<=10 then '학생요금' when m.age>=60 then '경로요금' else '일반요금' end from Member m";
+            String query2 = "select nullif(m.username, '관리자') as Member from Member m";
+            String query3 = "select coalesce(m.username, '이름 없는 회원') from Member m";
+            List<String> result = em.createQuery(query3, String.class).getResultList();
             System.out.println("====================");
-            System.out.println("result= " + result);
+            result.stream().forEach(System.out::println);
             System.out.println("====================");
-//            for (int i = 1; i <= 5; i++) {
-//                Team team = new Team();
-//                team.setName("team-"+i);
-//                em.persist(team);
-//
-//                Member member = new Member();
-//                member.setUsername("member-" + i);
-//                member.setTeam(team);
-//                member.setAge(i);
-//
-//
-//                em.persist(member);
-//            }
-//
-//            String query3 = "select m from Member m left join Team t on m.username = t.name";
-//            List<Member> result = em.createQuery(query3, Member.class)
-//                    .getResultList();
-//            System.out.println("====================");
-//            result.stream().forEach(System.out::println);
-//            System.out.println("====================");
-
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
