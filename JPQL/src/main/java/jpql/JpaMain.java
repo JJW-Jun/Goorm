@@ -3,28 +3,57 @@ package jpql;
 import javax.persistence.*;
 import java.util.List;
 
-import jpql.MemberDto;
-
 public class JpaMain {
     public static void main(String args[]) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpql");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
-        // dbConnection 얻어와서 쿼리 날리는 법.
-        try {
-            Member member = new Member();
-            member.setUsername("memberC");
-            member.setAge(20);
-            member.setType(MemberType.ADMIN);
-            em.persist(member);
 
-            String query = "select case when m.age<=10 then '학생요금' when m.age>=60 then '경로요금' else '일반요금' end from Member m";
-            String query2 = "select nullif(m.username, '관리자') as Member from Member m";
-            String query3 = "select coalesce(m.username, '이름 없는 회원') from Member m";
-            List<String> result = em.createQuery(query3, String.class).getResultList();
+        try {
+            Team teamA = new Team();
+            teamA.setName("teamA");
+            em.persist(teamA);
+
+            Team teamB = new Team();
+            teamB.setName("teamB");
+            em.persist(teamB);
+
+            Member membeA = new Member();
+            membeA.setUsername("memberA");
+            membeA.setAge(10);
+            membeA.setTeam(teamA);
+            membeA.setType(MemberType.USER);
+            em.persist(membeA);
+
+            Member memberB = new Member();
+            memberB.setUsername("memberB");
+            memberB.setAge(20);
+            memberB.setTeam(teamA);
+            memberB.setType(MemberType.USER);
+            em.persist(memberB);
+
+            Member memberC = new Member();
+            memberC.setUsername("memberC");
+            memberC.setAge(30);
+            memberC.setTeam(teamB);
+            memberC.setType(MemberType.USER);
+            em.persist(memberC);
+
+            em.flush();
+            em.clear();
+            
+            String query = "select t From Team t join fetch t.members m";
+            List<Team> result = em.createQuery(query, Team.class).getResultList();
+
+            System.out.println(result.size());
             System.out.println("====================");
-            result.stream().forEach(System.out::println);
+            for(Team team:result){
+                System.out.println("팀= "+team.getName()+ ", 회원수="+ team.getMembers().size());
+                for(Member member : team.getMembers()){
+                    System.out.println("->member= "+member);
+                }
+            }
             System.out.println("====================");
             tx.commit();
         } catch (Exception e) {

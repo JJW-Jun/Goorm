@@ -6,7 +6,7 @@ import lombok.ToString;
 import javax.persistence.*;
 
 
-@Entity @Data @ToString
+@Entity @Data
 public class Member {
     @Id
     @GeneratedValue

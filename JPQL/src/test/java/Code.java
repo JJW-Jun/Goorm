@@ -20,8 +20,4 @@ public class Code {
     }
 
 
-    @Test
-    void notNull(String str){
-        System.out.println(str);
-    }
 }

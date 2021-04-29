@@ -22,7 +22,6 @@ public class SharedConfiguration {
         this.stepBuilderFactory = stepBuilderFactory;
     }
 
-
     @Bean
     public Job shareJob() {
         return jobBuilderFactory.get("shareJob")
@@ -56,7 +55,6 @@ public class SharedConfiguration {
 
     @Bean
     public Step shareStep2() {
-
         return stepBuilderFactory.get("shareStep2")
                 .tasklet(((contribution, chunkContext) -> {
                     StepExecution stepExecution = contribution.getStepExecution();

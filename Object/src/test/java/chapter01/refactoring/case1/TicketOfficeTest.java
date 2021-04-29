@@ -3,6 +3,7 @@ package chapter01.refactoring.case1;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -31,6 +32,10 @@ class TicketOfficeTest {
 
         // then
         assertEquals(lst.size(), 2);
+    }
+
+    @Test
+    void date_(){
     }
 
 }
