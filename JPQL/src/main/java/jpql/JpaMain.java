@@ -1,6 +1,9 @@
 package jpql;
 
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import java.util.List;
 
 public class JpaMain {
@@ -40,20 +43,16 @@ public class JpaMain {
             memberC.setType(MemberType.USER);
             em.persist(memberC);
 
+
+            int resultCount = em.createQuery("update Member m set m.age = 20 ")
+                    .executeUpdate();
             em.flush();
             em.clear();
-            
-            String query = "select t From Team t join fetch t.members m";
-            List<Team> result = em.createQuery(query, Team.class).getResultList();
-
-            System.out.println(result.size());
             System.out.println("====================");
-            for(Team team:result){
-                System.out.println("팀= "+team.getName()+ ", 회원수="+ team.getMembers().size());
-                for(Member member : team.getMembers()){
-                    System.out.println("->member= "+member);
-                }
-            }
+            System.out.println("resultCount= "+resultCount);
+            System.out.println(membeA.getAge());
+            System.out.println(memberB.getAge());
+            System.out.println(memberC.getAge());
             System.out.println("====================");
             tx.commit();
         } catch (Exception e) {

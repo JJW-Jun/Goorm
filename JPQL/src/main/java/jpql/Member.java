@@ -1,12 +1,21 @@
 package jpql;
 
 import lombok.Data;
-import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 
 
-@Entity @Data
+@Entity
+@Data
 public class Member {
     @Id
     @GeneratedValue
@@ -20,10 +29,11 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private MemberType type;
 
-    @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "TEAM_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TEAM_ID")
     private Team team;
 
-    public void changeTeam(Team team){
+    public void changeTeam(Team team) {
         this.team = team;
         team.getMembers().add(this);
     }

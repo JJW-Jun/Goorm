@@ -10,7 +10,9 @@
         <class>jpql.Order</class>
         <class>jpql.Product</class>
         <class>jpql.Address</class>
+
         <properties>
+
             <property name="javax.persistence.jdbc.Driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpql"/>
             <property name="javax.persistence.jdbc.user" value="jun"/>
@@ -21,7 +23,7 @@
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="false"/>
              <property name="hibernate.jdbc.batch_size" value="1"/>
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
 
 
         </properties>
