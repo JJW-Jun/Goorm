@@ -4,9 +4,9 @@ import lombok.Data;
 
 import javax.persistence.*;
 
-@Entity @Inheritance(strategy = InheritanceType.JOINED) @Data
+@Entity @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) @Data
 @DiscriminatorColumn
-public class Item {
+public abstract class Item {
     @Id
     @GeneratedValue
     private Long id;

@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 
 @Entity @Data
-public class Member {
+public class Member extends BaseEntity{
     @Id
     @GeneratedValue
     private Long id;
@@ -17,7 +17,7 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private MemberType type;
 
-    @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "TEAM_ID")
+    @ManyToOne(fetch = FetchType.EAGER) @JoinColumn(name = "TEAM_ID")
     private Team team;
 
     public void changeTeam(Team team){

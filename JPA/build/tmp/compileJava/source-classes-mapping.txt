@@ -6,21 +6,27 @@ RoleType.java
  RoleType
 MemberType.java
  MemberType
-Member.java
- Member
+item/Album.java
+ item.Album
 Address.java
  Address
 MemberDto.java
  MemberDto
 Product.java
  Product
-JpaMain.java
- JpaMain
+item/Book.java
+ item.Book
 item/Movie.java
  item.Movie
 item/Item.java
  item.Item
-item/Album.java
- item.Album
-item/Book.java
- item.Book
+BaseEntity.java
+ BaseEntity
+Member.java
+ Member
+Parent.java
+ Parent
+Child.java
+ Child
+JpaMain.java
+ JpaMain
