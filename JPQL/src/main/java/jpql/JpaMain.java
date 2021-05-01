@@ -5,6 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.util.List;
+import java.util.Optional;
 
 public class JpaMain {
     public static void main(String args[]) {
@@ -42,6 +43,7 @@ public class JpaMain {
             memberC.setTeam(teamB);
             memberC.setType(MemberType.USER);
             em.persist(memberC);
+            Optional<String> str = Optional.ofNullable("String");
 
 
             int resultCount = em.createQuery("update Member m set m.age = 20 ")

@@ -1,8 +1,10 @@
 import jpql.Member;
-import org.junit.jupiter.api.Assertions;
+
 import org.junit.jupiter.api.Test;
 
-import static java.util.function.Predicate.isEqual;
+import java.util.Objects;
+import java.util.Optional;
+
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -17,6 +19,24 @@ public class Code {
         memberB.setUsername("MemberA");
 
         assertThat(memberA, is(equalTo(memberB)));
+    }
+
+    @Test
+    void result(){
+        optional_();
+    }
+
+    void optional_(){
+        System.out.println("1");
+        Optional<String> str = Optional.ofNullable("st");
+        System.out.println(str.get());
+        System.out.println("2");
+    }
+
+    void requireNonNull_(){
+        System.out.println("1");
+        String str = Objects.requireNonNull(null);
+        System.out.println("2");
     }
 
 

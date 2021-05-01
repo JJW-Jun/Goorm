@@ -1,3 +1,5 @@
+import item.Movie;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -11,46 +13,20 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Team teamA = new Team();
-            teamA.setName("teamA");
-            em.persist(teamA);
 
-            Team teamB = new Team();
-            teamB.setName("teamB");
-            em.persist(teamB);
-
-            Member membeA = new Member();
-            membeA.setUsername("memberA");
-            membeA.setAge(10);
-            membeA.setTeam(teamA);
-            membeA.setType(MemberType.USER);
-            em.persist(membeA);
-
-            Member memberB = new Member();
-            memberB.setUsername("memberB");
-            memberB.setAge(20);
-            memberB.setTeam(teamA);
-            memberB.setType(MemberType.USER);
-            em.persist(memberB);
-
-            Member memberC = new Member();
-            memberC.setUsername("memberC");
-            memberC.setAge(30);
-            memberC.setTeam(teamB);
-            memberC.setType(MemberType.USER);
-            em.persist(memberC);
+            Movie movie = new Movie();
+            movie.setActor("Actor");
+            movie.setDirector("Director");
+            movie.setName("Title");
+            em.persist(movie);
 
             em.flush();
             em.clear();
-            
-            String query = "select m From Member m where m = :member";
-            Member findMember = em.createQuery(query, Member.class)
-                    .setParameter("member", memberB)
-                    .getSingleResult();
 
-            System.out.println("====================");
+            Movie findMovie = em.find(Movie.class, movie.getId());
+            System.out.println("Moive= "+movie);
 
-            System.out.println("====================");
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();

@@ -16,3 +16,11 @@ Product.java
  Product
 JpaMain.java
  JpaMain
+item/Movie.java
+ item.Movie
+item/Item.java
+ item.Item
+item/Album.java
+ item.Album
+item/Book.java
+ item.Book

@@ -10,11 +10,15 @@
         <class>Order</class>
         <class>Product</class>
         <class>Address</class>
+        <class>item.Album</class>
+        <class>item.Book</class>
+        <class>item.Movie</class>
+        <class>item.Item</class>
         <properties>
             <property name="javax.persistence.jdbc.Driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpa"/>
             <property name="javax.persistence.jdbc.user" value="jun"/>
-            <property name="javax.persistence.jdbc.password" value="tjgusskavys8*"/>
+            <property name="javax.persistence.jdbc.password" value="*"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MariaDB10Dialect"/>
             <property name="hibernate.show_sql" value="true"/>
 
