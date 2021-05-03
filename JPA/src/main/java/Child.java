@@ -12,6 +12,4 @@ public class Child {
 
     @ManyToOne @JoinColumn(name = "parent_id")
     private Parent parent;
-
-
 }

@@ -3,8 +3,9 @@ import lombok.Data;
 import javax.persistence.*;
 
 
-@Entity @Data
-public class Member extends BaseEntity{
+@Entity
+@Data
+public class Member extends BaseEntity {
     @Id
     @GeneratedValue
     private Long id;
@@ -12,17 +13,11 @@ public class Member extends BaseEntity{
     @Column(name = "USERNAME")
     private String username;
 
-    private int age;
+    @Embedded
+    private Address officeAddress;
 
-    @Enumerated(EnumType.STRING)
-    private MemberType type;
+    @Embedded
+    private Period period;
 
-    @ManyToOne(fetch = FetchType.EAGER) @JoinColumn(name = "TEAM_ID")
-    private Team team;
-
-    public void changeTeam(Team team){
-        this.team = team;
-        team.getMembers().add(this);
-    }
 
 }
