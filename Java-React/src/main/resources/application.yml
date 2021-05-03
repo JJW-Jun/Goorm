@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:mariadb://localhost:3306/jpa
+    url: jdbc:mariadb://localhost:3306/java_react
     driver-class-name: org.mariadb.jdbc.Driver
     username: jun
-    password: *
+    password: tjgusskavys8*
   jpa:
     database-platform: org.hibernate.dialect.MariaDB10Dialect
     open-in-view: true
