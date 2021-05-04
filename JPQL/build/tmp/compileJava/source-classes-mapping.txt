@@ -6,11 +6,17 @@ jpql/MemberDto.java
  jpql.MemberDto
 jpql/Order.java
  jpql.Order
-jpql/Member.java
- jpql.Member
+jpql/MyH2Dialect.java
+ jpql.MyH2Dialect
 jpql/Address.java
  jpql.Address
-jpql/Team.java
- jpql.Team
+jpql/Member.java
+ jpql.Member
 jpql/JpaMain.java
  jpql.JpaMain
+jpql/Team.java
+ jpql.Team
+jpql/Person.java
+ jpql.Person
+jpql/Main.java
+ jpql.Main

@@ -43,18 +43,25 @@ public class JpaMain {
             memberC.setTeam(teamB);
             memberC.setType(MemberType.USER);
             em.persist(memberC);
-            Optional<String> str = Optional.ofNullable("String");
 
-
-            int resultCount = em.createQuery("update Member m set m.age = 20 ")
-                    .executeUpdate();
             em.flush();
             em.clear();
+            // 쿼리만으로는
+            // zjffpr션은 데이터가 없기 때문에 쿼리문이 나갔다. 그러나 fetch 로 바꾸면안 ㅏㄴㄴ간다
+            String query = "select t From Team t";
+            List<Team> result = em.createQuery(query, Team.class)
+                    .setFirstResult(0)
+                    .setMaxResults(2)
+                    .getResultList();
+
+            System.out.println(result.size());
             System.out.println("====================");
-            System.out.println("resultCount= "+resultCount);
-            System.out.println(membeA.getAge());
-            System.out.println(memberB.getAge());
-            System.out.println(memberC.getAge());
+            for(Team team :result){
+                System.out.println("팀= "+team.getName()+ ", 회원수="+ team.getMembers().size());
+                for(Member member : team.getMembers()){
+                    System.out.println("->member= "+member);
+                }
+            }
             System.out.println("====================");
             tx.commit();
         } catch (Exception e) {
@@ -65,3 +72,4 @@ public class JpaMain {
         emf.close();
     }
 }
+

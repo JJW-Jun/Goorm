@@ -1,2 +1,8 @@
-package chapter01;public class UserRepositoryImpl {
+package chapter01;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class UserRepositoryImpl {
+
 }
