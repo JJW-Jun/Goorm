@@ -26,11 +26,11 @@ MemberType.java
  MemberType
 Order.java
  Order
-Product.java
- Product
-Address.java
- Address
 Member.java
  Member
+Address.java
+ Address
+Product.java
+ Product
 JpaMain.java
  JpaMain
