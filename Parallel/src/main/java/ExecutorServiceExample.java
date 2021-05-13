@@ -1,11 +1,12 @@
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class ExecutorServiceExample {
     public static void main(String args[]) {
 //        ExecutorService executorService = Executors.newSingleThreadExecutor();
-        ExecutorService executorService = Executors.newFixedThreadPool(4);
+        ExecutorService executorService = Executors.newCachedThreadPool();
         executorService.execute(new MyTask("First"));
         executorService.execute(new MyTask("Second"));
         executorService.execute(new MyTask("Third"));
