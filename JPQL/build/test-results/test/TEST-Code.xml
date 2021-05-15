@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Code" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-01T23:56:11" hostname="JungJunWooui-MacBookPro.local" time="0.015">
+<testsuite name="Code" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-12T06:47:42" hostname="JungJunWooui-MacBookPro.local" time="0.014">
   <properties/>
-  <testcase name="result()" classname="Code" time="0.015"/>
-  <system-out><![CDATA[1
-st
-2
-]]></system-out>
+  <testcase name="object_type()" classname="Code" time="0.014"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

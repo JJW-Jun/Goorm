@@ -1,23 +1,21 @@
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 
 @Entity
 @Data
-public class Member extends BaseEntity {
+public class Member {
     @Id
     @GeneratedValue
     private Long id;
 
-    @Column(name = "USERNAME")
-    private String username;
+    private String name;
 
-    @Embedded
-    private Address officeAddress;
-
-    @Embedded
-    private Period period;
 
 
 }

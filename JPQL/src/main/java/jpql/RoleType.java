@@ -1,2 +1,7 @@
-package jpql;public class RoleType {
+package jpql;
+
+
+public enum RoleType {
+
+    GUEST, USER, ADMIN;
 }

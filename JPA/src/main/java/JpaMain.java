@@ -1,35 +1,33 @@
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
 public class JpaMain {
     public static void main(String args[]) {
-
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
 
         try {
-            Member memberA = new Member();
-            memberA.setUsername("memberA");
-            em.persist(memberA);
+            // 비영속
+            Member member = new Member();
+            member.setName("memberA");
+            member.setId(1L);
 
-            Member memberB = new Member();
-            memberB.setUsername("memberB");
-            em.persist(memberB);
-            em.flush();
-            em.clear();
+            // 영속
+            System.out.println("====================");
+            em.persist(member);
+            System.out.println("====================");
 
-            System.out.println("====================");
-            Member refMember = em.getReference(Member.class, memberB.getId());
-            em.detach(refMember);
-            refMember.getUsername();
-            System.out.println("====================");
             tx.commit();
-        } catch (Exception e) {
+        } catch (Exception ex) {
             tx.rollback();
         } finally {
             em.close();
         }
         emf.close();
     }
+
 }

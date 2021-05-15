@@ -16,7 +16,7 @@ public class DatasourceConfig {
                 .driverClassName("org.mariadb.jdbc.Driver")
                 .url("jdbc:mariadb://localhost:3306/jpaweb")
                 .username("jun")
-                .password("tjgusskavys8*")
+                .password("*")
                 .build();
     }
 }

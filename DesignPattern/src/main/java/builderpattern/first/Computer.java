@@ -1,5 +1,10 @@
 package builderpattern.first;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter @Setter @ToString
 public class Computer {
     private String cpu;
     private String ram;

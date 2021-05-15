@@ -1,7 +1,11 @@
 package com.example.batch;
 
+import lombok.Getter;
+
 import java.lang.management.OperatingSystemMXBean;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
 
@@ -36,3 +40,6 @@ public class Test {
 
     }
 }
+
+
+

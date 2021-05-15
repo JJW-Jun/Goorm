@@ -1,41 +1,57 @@
 package jpql;
 
+import jpql.item.BaseEntity;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
+import javax.persistence.*;
 
 
 @Entity
 @Data
 public class Member {
+
     @Id
     @GeneratedValue
+    @Column(name = "MEMBER_ID")
     private Long id;
 
-    @Column(name = "USERNAME")
-    private String username;
+    @Column(name = "MEMBER_NAME")
+    private String membername;
 
-    private int age;
+    @Column(name = "TEAM_ID")
+    private Long teamId;
 
-    @Enumerated(EnumType.STRING)
-    private MemberType type;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "TEAM_ID")
-    private Team team;
-
-    public void changeTeam(Team team) {
-        this.team = team;
-        team.getMembers().add(this);
-    }
+    protected Member() { }
 
 }
+
+
+//@Entity
+//@Data
+//public class Member {
+//    @Id
+//    @GeneratedValue
+//    @Column(name = "MEMBER_ID")
+//    private Long id;
+//
+//    @Column(name = "MEMBER_NAME")
+//    private String memberName;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "TEAM_ID")
+//    private Team team;
+//
+//    public void setTeam(@NonNull Team team) {
+//        this.team = team;
+//        List<Member> lst = team.getMembers();
+//        lst.removeIf(x -> lst.contains(this));
+//        lst.add(this);
+//    }
+//
+//    protected Member() {
+//    }
+//
+//}
+
+

@@ -1,3 +1,5 @@
+package jpql.item;
+
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,4 +23,6 @@ public class Parent {
         child.setParent(this);
 
     }
+
+
 }

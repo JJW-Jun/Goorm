@@ -1,14 +1,16 @@
 package builderpattern.second;
 
+import java.util.Objects;
+
 public class Computer {
     private String cpu;
     private String ram;
     private String storage;
 
     public Computer(String cpu, String ram, String storage) {
-        this.cpu = cpu;
-        this.ram = ram;
-        this.storage = storage;
+        this.cpu = Objects.requireNonNull(cpu, "Cpu is null");
+        this.ram = Objects.requireNonNull(ram, "Ram is null");
+        this.storage = Objects.requireNonNull(cpu, "Storage is null");
     }
 
     @Override

@@ -4,6 +4,8 @@ chapter01/refactoring/case1/TicketSeller.java
  chapter01.refactoring.case1.TicketSeller
 DataSourceConfig.java
  DataSourceConfig
+chapter01/UserRepositoryImpl.java
+ chapter01.UserRepositoryImpl
 chapter01/refactoring/case2/TicketOffice.java
  chapter01.refactoring.case2.TicketOffice
 chapter01/bad/Ticket.java
@@ -12,6 +14,8 @@ chapter01/bad/TicketSeller.java
  chapter01.bad.TicketSeller
 chapter01/good/Theater.java
  chapter01.good.Theater
+Fruit.java
+ Fruit
 chapter01/refactoring/case1/Bag.java
  chapter01.refactoring.case1.Bag
 chapter01/good/Bag.java
@@ -38,8 +42,6 @@ chapter01/refactoring/case1/TicketOffice.java
  chapter01.refactoring.case1.TicketOffice
 chapter01/refactoring/case2/Ticket.java
  chapter01.refactoring.case2.Ticket
-chapter01/refactoring/case1/Invitation.java
- chapter01.refactoring.case1.Invitation
 chapter01/bad/TicketOffice.java
  chapter01.bad.TicketOffice
 chapter01/bad/Bag.java
@@ -56,7 +58,7 @@ chapter01/refactoring/case2/TicketSeller.java
  chapter01.refactoring.case2.TicketSeller
 chapter01/good/Ticket.java
  chapter01.good.Ticket
+chapter01/refactoring/case1/Invitation.java
+ chapter01.refactoring.case1.Invitation
 Main.java
  Main
-Fruit.java
- Fruit

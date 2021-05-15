@@ -1,9 +1,18 @@
+package jpql.item;
+
+import lombok.Data;
+
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @MappedSuperclass
-public class BaseEntity {
+@Data
+public abstract class BaseEntity {
 
-    private String uniqueId;
-    private LocalDate createLocalDate;
+    private String createdBy;
+    private LocalDateTime createdDate;
+    private String lastModifiedBy;
+    private LocalDateTime lastModifiedDate;
+
 }

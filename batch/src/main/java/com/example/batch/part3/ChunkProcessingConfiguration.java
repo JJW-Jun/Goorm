@@ -9,6 +9,7 @@ import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.item.ItemProcessor;
@@ -54,7 +55,8 @@ public class ChunkProcessingConfiguration {
                 .writer(itemWriter())
                 .build();
     }
-//    @Bean
+
+    //    @Bean
 //    public Job chunkProcessingJob() {
 //        return jobBuilderFactory.get("chunkProcessingJob")
 //                .incrementer(new RunIdIncrementer())
@@ -62,13 +64,18 @@ public class ChunkProcessingConfiguration {
 //                .next(this.chunkBaseStep())
 //                .build();
 //    }
-
     @Bean
     public Step taskBaseStep() {
         return stepBuilderFactory.get("taskBaseStep")
-                .tasklet(this.tasklet())
+                .tasklet(this.tasklet(null))
                 .build();
     }
+//    @Bean
+//    public Step taskBaseStep() {
+//        return stepBuilderFactory.get("taskBaseStep")
+//                .tasklet(this.tasklet())
+//                .build();
+//    }
 
 //    @Bean
 //    public Step chunkBaseStep() {
@@ -94,15 +101,18 @@ public class ChunkProcessingConfiguration {
         return new ListItemReader<>(getItems());
     }
 
-    private Tasklet tasklet() {
+
+    @Bean
+    @StepScope
+    public Tasklet tasklet(@Value("#{jobParameters[chunkSize]}") String value) {
         List<String> items = getItems();
         return ((contribution, chunkContext) -> {
             // 읽은 아이템 크기를 읽는다 -> 조회도 가능
             StepExecution stepExecution = contribution.getStepExecution();
 
             // 방법1
-            JobParameters jobParameters = stepExecution.getJobParameters();
-            String value = jobParameters.getString("chunkSize", "10");
+//            JobParameters jobParameters = stepExecution.getJobParameters();
+//            String value = jobParameters.getString("chunkSize", "10");
             int chunkSize = StringUtils.isNotEmpty(value) ? Integer.parseInt(value) : 10;
 
             int fromIndex = stepExecution.getReadCount();
@@ -123,6 +133,36 @@ public class ChunkProcessingConfiguration {
             return RepeatStatus.CONTINUABLE;
         });
     }
+    // Scope은 항상 bean이어야 한다.
+//    private Tasklet tasklet() {
+//        List<String> items = getItems();
+//        return ((contribution, chunkContext) -> {
+//            // 읽은 아이템 크기를 읽는다 -> 조회도 가능
+//            StepExecution stepExecution = contribution.getStepExecution();
+//
+//            // 방법1
+//            JobParameters jobParameters = stepExecution.getJobParameters();
+//            String value = jobParameters.getString("chunkSize", "10");
+//            int chunkSize = StringUtils.isNotEmpty(value) ? Integer.parseInt(value) : 10;
+//
+//            int fromIndex = stepExecution.getReadCount();
+//            System.out.println("fronIndex= " + fromIndex);
+//            int toIndex = fromIndex + chunkSize;
+//
+//            if (fromIndex >= items.size()) {
+//                return RepeatStatus.FINISHED;
+//            }
+//
+////            items.subList(fromIndex, toIndex);
+//
+//            List<String> subList = items.subList(fromIndex, toIndex);
+//
+//            log.info("task item size: {}", subList.size());
+//
+//            stepExecution.setReadCount(toIndex);
+//            return RepeatStatus.CONTINUABLE;
+//        });
+//    }
 
     private List<String> getItems() {
         List<String> items = new ArrayList<>();

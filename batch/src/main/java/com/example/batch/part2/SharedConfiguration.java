@@ -24,6 +24,7 @@ public class SharedConfiguration {
 
     @Bean
     public Job shareJob() {
+        "ㅇㅇ".equals("ㅇㅇ");
         return jobBuilderFactory.get("shareJob")
                 .incrementer(new RunIdIncrementer())
                 .start(this.shareStep())

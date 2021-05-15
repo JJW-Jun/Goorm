@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestCode" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-01T02:44:37" hostname="JungJunWooui-MacBookPro.local" time="0.016">
+<testsuite name="TestCode" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-06T22:22:54" hostname="JungJunWooui-MacBookPro.local" time="0.019">
   <properties/>
-  <testcase name="test()" classname="TestCode" time="0.016"/>
-  <system-out><![CDATA[0
+  <testcase name="tt()" classname="TestCode" time="0.019"/>
+  <system-out><![CDATA[true
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
