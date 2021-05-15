@@ -5,26 +5,31 @@ import lombok.Data;
 
 import javax.persistence.*;
 
-
-@Entity
-@Data
-public class Member {
+@Entity @Data
+public class Member{
 
     @Id
     @GeneratedValue
-    @Column(name = "MEMBER_ID")
     private Long id;
 
     @Column(name = "MEMBER_NAME")
     private String membername;
 
-    @Column(name = "TEAM_ID")
-    private Long teamId;
+    private int age;
 
+    @Enumerated(EnumType.STRING)
+    private MemberType type;
 
-    protected Member() { }
+    @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "members")
+    private Team team;
+
+    public void changeTeam(Team team){
+        this.team = team;
+        team.getMembers().add(this);
+    }
 
 }
+
 
 
 //@Entity

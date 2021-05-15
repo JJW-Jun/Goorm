@@ -7,7 +7,6 @@
     <persistence-unit name="jpql">
         <class>jpql.Member</class>
         <class>jpql.Team</class>
-        <!--        <class>jpql.Team</class>-->
         <class>jpql.Order</class>
         <class>jpql.item.Item</class>
         <class>jpql.item.Album</class>
