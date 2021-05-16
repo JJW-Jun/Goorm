@@ -1,15 +1,8 @@
-package builderpattern.practice;
+package builder.practice;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.util.Assert;
-import org.springframework.validation.annotation.Validated;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
-import java.util.Collections;
 
 
 @Getter @Setter

@@ -1,11 +1,9 @@
-package builderpattern;
+package builder;
 
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 import static java.awt.Color.GREEN;
-import static java.awt.Color.yellow;
 
 public interface ApplePredicate {
     boolean test(Apple apple);
@@ -25,13 +23,3 @@ class AppleGreenColorPredicate implements ApplePredicate {
     static Consumer<String> t = x-> System.out.println("");
 
 }
-
-
-class Teest {
-    public static void main(String args[]) {
-
-
-    }
-
-}
-

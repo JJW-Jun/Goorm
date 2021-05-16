@@ -1,4 +1,4 @@
-package builderpattern;
+package builder;
 
 import lombok.Data;
 

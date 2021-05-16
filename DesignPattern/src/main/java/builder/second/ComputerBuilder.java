@@ -1,4 +1,4 @@
-package builderpattern.second;
+package builder.second;
 
 import org.springframework.util.Assert;
 

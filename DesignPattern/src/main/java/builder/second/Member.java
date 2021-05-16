@@ -1,4 +1,4 @@
-package builderpattern.second;
+package builder.second;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package builderpattern.first;
+package builder.first;
 
 public class ComputerFactory {
 

@@ -1,4 +1,4 @@
-package builderpattern.practice;
+package builder.practice;
 
 import lombok.Getter;
 import lombok.ToString;
