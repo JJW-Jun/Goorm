@@ -8,7 +8,9 @@ import org.springframework.batch.core.configuration.annotation.StepBuilderFactor
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.database.JdbcCursorItemReader;
+import org.springframework.batch.item.database.JpaCursorItemReader;
 import org.springframework.batch.item.database.builder.JdbcCursorItemReaderBuilder;
+import org.springframework.batch.item.database.builder.JpaCursorItemReaderBuilder;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
@@ -17,10 +19,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -29,13 +32,17 @@ public class ItemReaderConfiguration {
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
     private final DataSource dataSource;
+    private final EntityManagerFactory entityManagerFactory;
+    private final EntityManager entityManager;
 
-
+    // input타입은 아이템 리더ㅣㅇ세ㅓ 리턴하고 아이템프로세서에서 받아서 아웃풋으로 변환후 데이터를 못아서 아웃풋타입의 리스트를 아이템 라이터에 전달한다.
     public ItemReaderConfiguration(JobBuilderFactory jobBuilderFactory, StepBuilderFactory stepBuilderFactory
-            , DataSource dataSource) {
+            , DataSource dataSource, EntityManagerFactory entityManagerFactory, EntityManager entityManager) {
         this.jobBuilderFactory = jobBuilderFactory;
         this.stepBuilderFactory = stepBuilderFactory;
         this.dataSource = dataSource;
+        this.entityManagerFactory = entityManagerFactory;
+        this.entityManager = entityManager;
     }
 
     @Bean
@@ -45,6 +52,7 @@ public class ItemReaderConfiguration {
                 .incrementer(new RunIdIncrementer())
                 .start(this.customItemReaderStep())
                 .next(this.csvFileStep())
+                .next(this.jpaStep())
 //                .next(this.jdbcStep())
                 .build();
     }
@@ -89,6 +97,28 @@ public class ItemReaderConfiguration {
                 )).build();
 
         itemReader.afterPropertiesSet();
+        return itemReader;
+    }
+
+    @Bean
+    public Step jpaStep() throws Exception {
+        return stepBuilderFactory.get("jpaStep")
+                .<Person, Person>chunk(10)
+                .reader(this.jpaCursorItemReader())
+                .writer(itemWriter())
+                .build();
+    }
+
+    private JpaCursorItemReader<Person> jpaCursorItemReader() throws Exception {
+
+        System.out.println("JPAstep");
+        JpaCursorItemReader<Person> itemReader = new JpaCursorItemReaderBuilder<Person>()
+                .name("jpaCursorItemReader")
+                .entityManagerFactory(entityManagerFactory)
+                .queryString("select p from Person p")
+                .build();
+        itemReader.afterPropertiesSet();
+//        System.out.println("주소= "+ Objects.requireNonNull(itemReader.read()).getAddress());
         return itemReader;
     }
 
