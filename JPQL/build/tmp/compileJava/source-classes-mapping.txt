@@ -10,12 +10,12 @@ jpql/Order.java
  jpql.Order
 jpql/Station.java
  jpql.Station
-jpql/item/Item.java
- jpql.item.Item
-jpql/item/Parent.java
- jpql.item.Parent
 jpql/Address.java
  jpql.Address
+jpql/item/Parent.java
+ jpql.item.Parent
+jpql/item/Item.java
+ jpql.item.Item
 jpql/item/Movie.java
  jpql.item.Movie
 jpql/RoleType.java
@@ -32,9 +32,9 @@ jpql/item/BaseEntity.java
  jpql.item.BaseEntity
 jpql/item/Book.java
  jpql.item.Book
-jpql/Team.java
- jpql.Team
 jpql/Member.java
  jpql.Member
+jpql/Team.java
+ jpql.Team
 jpql/JpaMain.java
  jpql.JpaMain

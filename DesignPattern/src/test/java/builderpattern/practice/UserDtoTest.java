@@ -1,22 +1,15 @@
 package builderpattern.practice;
 
-import builderpattern.second.Member;
-import builderpattern.second.MemberDto;
-import org.aspectj.apache.bcel.classfile.Module;
+import builder.practice.UserDto;
+import builder.second.MemberDto;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtensionContext;
 import org.openjdk.jmh.annotations.Benchmark;
-import org.springframework.boot.test.context.SpringBootTest;
 
-import java.io.Closeable;
 import java.io.File;
 import java.time.*;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
-import java.util.function.Function;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class UserDtoTest {
     @Test

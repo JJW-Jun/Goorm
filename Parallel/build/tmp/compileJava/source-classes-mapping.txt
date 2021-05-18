@@ -19,3 +19,6 @@ Test.java
  Test
 ForkJoinDirSize.java
  ForkJoinDirSize
+FutureExample.java
+ FutureExample
+ FutureExample$1

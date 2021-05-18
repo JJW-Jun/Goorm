@@ -21,8 +21,7 @@ public class Person {
     private String address;
 
     protected Person (){};
-    public Person(Long id, String name, int age, String address) {
-        this.id = id;
+    public Person( String name, int age, String address) {
         this.name = name;
         this.age = age;
         this.address = address;

@@ -6,9 +6,13 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
+import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
+import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.batch.item.database.JdbcCursorItemReader;
 import org.springframework.batch.item.database.JpaCursorItemReader;
+import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilder;
 import org.springframework.batch.item.database.builder.JdbcCursorItemReaderBuilder;
 import org.springframework.batch.item.database.builder.JpaCursorItemReaderBuilder;
 import org.springframework.batch.item.file.FlatFileItemReader;
@@ -52,8 +56,18 @@ public class ItemReaderConfiguration {
                 .incrementer(new RunIdIncrementer())
                 .start(this.customItemReaderStep())
                 .next(this.csvFileStep())
-                .next(this.jpaStep())
+//                .next(this.jpaStep())
 //                .next(this.jdbcStep())
+                .build();
+    }
+
+    @Bean
+    public Job itmer() throws Exception{
+        System.out.println("This is the test");
+        return this.jobBuilderFactory.get("itemReaderJob")
+                .incrementer(new RunIdIncrementer())
+                .start(this.customItemReaderStep())
+                .next(this.csvFileStep())
                 .build();
     }
 
@@ -93,34 +107,60 @@ public class ItemReaderConfiguration {
                 .dataSource(dataSource)
                 .sql("select id, name, age, address from person")
                 .rowMapper((rs, rowNum) -> new Person(
-                        rs.getLong(1), rs.getString(2), rs.getInt(3), rs.getString(4)
+                        rs.getString(2), rs.getInt(3), rs.getString(4)
                 )).build();
 
         itemReader.afterPropertiesSet();
         return itemReader;
     }
 
-    @Bean
-    public Step jpaStep() throws Exception {
-        return stepBuilderFactory.get("jpaStep")
-                .<Person, Person>chunk(10)
-                .reader(this.jpaCursorItemReader())
-                .writer(itemWriter())
+//    @Bean
+//    public Step jpaStep() throws Exception {
+//        return stepBuilderFactory.get("jpaStep")
+//                .<Person, Person>chunk(10)
+//                .reader(this.jpaCursorItemReader())
+//                .writer(itemWriter())
+//                .build();
+//    }
+
+//    @Bean
+//    public Step jdbcBatchItemWriterStep(){
+//        return stepBuilderFactory.get("jdbcBatchItemWriterStep")
+//                .<Person, Person>chunk(10)
+//                .reader(itemReader())
+//                .writer(jdbcBatchItemWriter())
+//                .build();
+//
+//    }
+
+    private ItemWriter<? super Person> jdbcBatchItemWriter() {
+        JdbcBatchItemWriter<Person> jdbcBatchItemWriter = new JdbcBatchItemWriterBuilder<Person>()
+                .dataSource(dataSource)
+                .itemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>())
+                .sql("insert into person(name, age, address) values(:name, :age, :address")
                 .build();
+
+        jdbcBatchItemWriter.afterPropertiesSet();
+        return jdbcBatchItemWriter;
+
     }
 
-    private JpaCursorItemReader<Person> jpaCursorItemReader() throws Exception {
+//    private ItemReader<? extends Person> itemReader() {
+//    }
 
-        System.out.println("JPAstep");
-        JpaCursorItemReader<Person> itemReader = new JpaCursorItemReaderBuilder<Person>()
-                .name("jpaCursorItemReader")
-                .entityManagerFactory(entityManagerFactory)
-                .queryString("select p from Person p")
-                .build();
-        itemReader.afterPropertiesSet();
-//        System.out.println("주소= "+ Objects.requireNonNull(itemReader.read()).getAddress());
-        return itemReader;
-    }
+
+//    private JpaCursorItemReader<Person> jpaCursorItemReader() throws Exception {
+//
+//        System.out.println("JPAstep");
+//        JpaCursorItemReader<Person> itemReader = new JpaCursorItemReaderBuilder<Person>()
+//                .name("jpaCursorItemReader")
+//                .entityManagerFactory(entityManagerFactory)
+//                .queryString("select p from Person p")
+//                .build();
+//        itemReader.afterPropertiesSet();
+////        System.out.println("주소= "+ Objects.requireNonNull(itemReader.read()).getAddress());
+//        return itemReader;
+//    }
 
 
     private FlatFileItemReader<Person> csvFileItemReader() throws Exception {
@@ -134,7 +174,7 @@ public class ItemReaderConfiguration {
             String name = fieldSet.readString("name");
             int age = fieldSet.readInt("age");
             String address = fieldSet.readString("address");
-            return new Person(id, name, age, address);
+            return new Person(name, age, address);
         });
 
         FlatFileItemReader<Person> itemReader = new FlatFileItemReaderBuilder<Person>()
@@ -159,7 +199,7 @@ public class ItemReaderConfiguration {
     private List<Person> getItems() {
         List<Person> items = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            items.add(new Person(i + 1L, "name ", i + 10, "서울"));
+            items.add(new Person( "name ", i + 10, "서울"));
         }
 
         return items;

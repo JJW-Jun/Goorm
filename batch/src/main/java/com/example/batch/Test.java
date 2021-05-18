@@ -9,12 +9,12 @@ import java.util.function.BiFunction;
 public class Test {
 
 
-    private final List<String> lst;
+//    private final List<String> lst;
 
-
-    Test(List<String> lst) {
-        this.lst = new ArrayList<>(lst);
-    }
+//
+//    Test(List<String> lst) {
+//        this.lst = new ArrayList<>(lst);
+//    }
 
     Test(){};
 
