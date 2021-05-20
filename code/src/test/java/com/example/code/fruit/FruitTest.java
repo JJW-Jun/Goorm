@@ -1,6 +1,7 @@
 package com.example.code.fruit;
 
 import com.example.code.CodeApplication;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,16 +12,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
-import java.io.File;
-import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.*;
 
-@Commit
+//@Commit
 @Transactional
 @SpringBootTest
 @ContextConfiguration(classes = CodeApplication.class)
@@ -68,21 +66,37 @@ class FruitTest {
     }
 
     @Test
-    void printFruit() throws Exception{
-        fruitRepository.findFruit().stream()
-                .filter(Fruit::isApple)
-                .filter(Fruit::isGradeA)
-                .filter(Fruit::over3Kg)
-                .forEach(System.out::println);
+    void 메서드참조vs람다() throws Exception{
+        // Given
+        List<Fruit> lambda = fruitRepository.findFruit().stream()
+                                                .filter(Fruit::isApple)
+                                                .filter(Fruit::isGradeA)
+                                                .filter(Fruit::over3Kg)
+                                                .collect(Collectors.toList());
 
-        System.out.println("====================");
+        // When
+        List<Fruit> method_ref = fruitRepository.findFruit().stream()
+                                                .filter(x->x.getKind().equals("Apple"))
+                                                .filter(x->x.getGrade().equals("A"))
+                                                .filter(x->x.getWeight()>=3.0)
+                                                .collect(Collectors.toList());
+
+        // Then
+        assertThat(lambda.size(), is(method_ref.size()));
+    }
+
+
+
+    @Test
+    void lambda() throws Exception{
 
         fruitRepository.findFruit().stream()
                 .filter(x->x.getKind().equals("Apple"))
                 .filter(x->x.getGrade().equals("A"))
                 .filter(x->x.getWeight()>=3.0)
-                .forEach(System.out::println);
+                .collect(Collectors.toList());
     }
+
 
 
     @Test

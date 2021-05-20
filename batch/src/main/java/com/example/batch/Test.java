@@ -2,10 +2,12 @@ package com.example.batch;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.w3c.dom.css.Rect;
 
 import java.lang.management.OperatingSystemMXBean;
 import java.util.*;
 import java.util.function.BiFunction;
+
 public class Test {
 
 
@@ -16,13 +18,24 @@ public class Test {
 //        this.lst = new ArrayList<>(lst);
 //    }
 
-    Test(){};
+    Test() {
+    }
+
+    ;
+
+    @Override
+    public boolean equals(Object o) {
+        throw new AssertionError(); // 호출금지
+    }
 
     public List<String> testMethod(List<String> lst) {
         return Collections.unmodifiableList(lst);
     }
-}
 
+    public static void main(String args[]) {
+
+    }
+}
 
 
 //enum Operator {

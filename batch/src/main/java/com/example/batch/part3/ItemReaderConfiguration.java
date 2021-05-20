@@ -205,5 +205,4 @@ public class ItemReaderConfiguration {
         return items;
     }
 
-
 }

@@ -12,6 +12,13 @@ import java.util.List;
 @Data
 @Entity
 public class User {
+
+
+    public class FullName {
+        private String firstName;
+        private String LastName;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -37,7 +44,10 @@ public class User {
         return "Man".equals(getGender());
     }
 
-    User(){};
+    User() {
+    }
+
+    ;
 
     User(String name, String address, int age, String gender) {
         this.name = name;
@@ -47,6 +57,10 @@ public class User {
     }
 
     public static void main(String args[]) {
+        User man = new User("John", "Seoul", 30, "Man");
+        User woman = new User("Alice", "Busan", 25, "Woman");
+        System.out.println(man.address == woman.address);
+
 
     }
 

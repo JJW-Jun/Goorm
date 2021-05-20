@@ -3,6 +3,7 @@ package com.example.batch.part3;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 
 import javax.persistence.Entity;
@@ -11,7 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity @Setter
-@Getter
+@Getter @ToString
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,4 +27,5 @@ public class Person {
         this.age = age;
         this.address = address;
     }
+
 }
