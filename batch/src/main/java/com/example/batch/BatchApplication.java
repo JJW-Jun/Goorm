@@ -1,8 +1,8 @@
 package com.example.batch;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import org.hibernate.SessionFactory;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
+import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -33,5 +33,7 @@ public class BatchApplication {
         return new JPAQueryFactory(entityManager);
     }
 
+    @Autowired
+    private JobBuilderFactory jobBuilderFactory;
 
 }

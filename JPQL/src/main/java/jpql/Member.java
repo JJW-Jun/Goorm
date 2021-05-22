@@ -2,14 +2,18 @@ package jpql;
 
 import jpql.item.BaseEntity;
 import lombok.Data;
+import lombok.Getter;
 
 import javax.persistence.*;
+import java.util.*;
 
-@Entity @Data
-public class Member{
+@Entity
+@Data
+public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "MEMBER_ID")
     private Long id;
 
     @Column(name = "MEMBER_NAME")
@@ -17,19 +21,17 @@ public class Member{
 
     private int age;
 
-    @Enumerated(EnumType.STRING)
-    private MemberType type;
-
-    @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "members")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TEAM_ID")
     private Team team;
 
-    public void changeTeam(Team team){
+    public void changeTeam(Team team) {
         this.team = team;
         team.getMembers().add(this);
     }
 
-}
 
+}
 
 
 //@Entity

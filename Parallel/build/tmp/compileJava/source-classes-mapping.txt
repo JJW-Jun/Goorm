@@ -22,3 +22,5 @@ ForkJoinDirSize.java
 FutureExample.java
  FutureExample
  FutureExample$1
+ParallelReduceMinMax.java
+ ParallelReduceMinMax

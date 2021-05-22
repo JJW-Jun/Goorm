@@ -23,6 +23,10 @@ dependencies {
     implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.4.31.Final'
     implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
     implementation group: 'com.querydsl', name: 'querydsl-jpa', version: '4.4.0'
+    implementation group: 'org.springframework.batch', name: 'spring-batch-core', version: '4.3.2'
+    testImplementation group: 'org.springframework.batch', name: 'spring-batch-test', version: '4.3.2'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-batch', version: '2.4.4'
+    implementation group: 'org.springframework.batch', name: 'spring-batch-infrastructure', version: '4.3.2'
 
 
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'

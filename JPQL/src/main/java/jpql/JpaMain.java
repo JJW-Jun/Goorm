@@ -1,36 +1,52 @@
 package jpql;
 
-import jpql.item.Child;
+//import jpql.item.Child;
+
 import jpql.item.Parent;
 import org.hibernate.Hibernate;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 
 public class JpaMain {
     public static void main(String args[]) {
+
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpql");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
+
         try {
-            
+            Member member = new Member();
+            member.setMembername("memberA");
+            member.setAge(30);
+            em.persist(member);
 
-            Member memberA = new Member();
-            memberA.setMembername("memberA");
-            em.persist(memberA);
+            // JAva 표준 스펙
+            CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+            CriteriaQuery<Member> query = criteriaBuilder.createQuery(Member.class);
 
-            em.flush();
-            em.clear();
+            Root<Member> m = query.from(Member.class);
+            CriteriaQuery<Member> criteriaQuery = query.select(m).where(criteriaBuilder.equal(
+                    m.get("membername"), "memberA"
+            ));
+
+
+            String membername = "kim";
+            if (membername != null) {
+                criteriaQuery = criteriaQuery.where(criteriaBuilder.equal(m.get("membername"), "memberA"));
+            }
+
+            List<Member> members = em.createQuery(criteriaQuery).getResultList();
 
             System.out.println("====================");
-            Member refMember = em.getReference(Member.class, memberA.getId());
-            System.out.println(refMember.getClass());
-            em.close();
+            for (Member mem : members) {
+                System.out.println("Member= " + mem);
+            }
             System.out.println("====================");
 
             tx.commit();
@@ -42,4 +58,5 @@ public class JpaMain {
         emf.close();
     }
 }
+
 

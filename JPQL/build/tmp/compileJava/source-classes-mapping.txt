@@ -10,22 +10,26 @@ jpql/Order.java
  jpql.Order
 jpql/Station.java
  jpql.Station
-jpql/Address.java
- jpql.Address
+jpql/Period.java
+ jpql.Period
 jpql/item/Parent.java
  jpql.item.Parent
-jpql/item/Item.java
- jpql.item.Item
-jpql/item/Movie.java
- jpql.item.Movie
 jpql/RoleType.java
  jpql.RoleType
+jpql/Address.java
+ jpql.Address
+jpql/item/Movie.java
+ jpql.item.Movie
+jpql/AddressEntity.java
+ jpql.AddressEntity
 jpql/Person.java
  jpql.Person
 jpql/item/Album.java
  jpql.item.Album
 jpql/MyH2Dialect.java
  jpql.MyH2Dialect
+jpql/item/Item.java
+ jpql.item.Item
 jpql/item/Child.java
  jpql.item.Child
 jpql/item/BaseEntity.java

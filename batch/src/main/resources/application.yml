@@ -13,7 +13,7 @@ spring:
     hibernate:
       ddl-auto: update
   batch:
-    initialize-schema: always
+    initialize-schema: never
     job:
       names: ${job.name:None}
 

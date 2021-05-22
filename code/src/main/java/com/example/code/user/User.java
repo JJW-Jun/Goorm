@@ -28,6 +28,8 @@ public class User {
     private String phoneNumber;
     private String gender;
 
+//    public User(UserRequestDto requestDto){
+//    }
 
     public boolean liveSeoul() {
         return "Seoul".equals(getAddress());
