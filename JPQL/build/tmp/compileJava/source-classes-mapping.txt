@@ -8,37 +8,35 @@ jpql/item/BadCode.java
  jpql.item.BadCode
 jpql/Order.java
  jpql.Order
-jpql/Station.java
- jpql.Station
 jpql/Period.java
  jpql.Period
-jpql/item/Parent.java
- jpql.item.Parent
-jpql/RoleType.java
- jpql.RoleType
 jpql/Address.java
  jpql.Address
+jpql/item/Parent.java
+ jpql.item.Parent
 jpql/item/Movie.java
  jpql.item.Movie
-jpql/AddressEntity.java
- jpql.AddressEntity
+jpql/item/Item.java
+ jpql.item.Item
+jpql/Team.java
+ jpql.Team
 jpql/Person.java
  jpql.Person
 jpql/item/Album.java
  jpql.item.Album
 jpql/MyH2Dialect.java
  jpql.MyH2Dialect
-jpql/item/Item.java
- jpql.item.Item
+jpql/AddressEntity.java
+ jpql.AddressEntity
 jpql/item/Child.java
  jpql.item.Child
 jpql/item/BaseEntity.java
  jpql.item.BaseEntity
 jpql/item/Book.java
  jpql.item.Book
+jpql/RoleType.java
+ jpql.RoleType
 jpql/Member.java
  jpql.Member
-jpql/Team.java
- jpql.Team
 jpql/JpaMain.java
  jpql.JpaMain

@@ -1,16 +1,10 @@
 package jpql;
 
-//import jpql.item.Child;
 
-import jpql.item.Parent;
-import org.hibernate.Hibernate;
-
-import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import java.util.List;
-
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
 public class JpaMain {
     public static void main(String args[]) {
@@ -21,36 +15,46 @@ public class JpaMain {
         tx.begin();
 
         try {
+            Team team = new Team();
+            team.setName("teamA");
+            em.persist(team);
+
             Member member = new Member();
             member.setMembername("memberA");
-            member.setAge(30);
+//            member.setTeam(team);
             em.persist(member);
+//            Team teamA = new Team();
+//            teamA.setName("teamA");
+//            em.persist(teamA);
+//
+//            Team teamB = new Team();
+//            teamB.setName("teamB");
+//            em.persist(teamB);
 
-            // JAva 표준 스펙
-            CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-            CriteriaQuery<Member> query = criteriaBuilder.createQuery(Member.class);
+//            Member memberA = new Member();
+//            memberA.setMembername("memberA");
+//            memberA.setAge(30);
+//            memberA.setType(MemberType.ADMIN);
+//            em.persist(memberA);
 
-            Root<Member> m = query.from(Member.class);
-            CriteriaQuery<Member> criteriaQuery = query.select(m).where(criteriaBuilder.equal(
-                    m.get("membername"), "memberA"
-            ));
+//            Member memberB = new Member();
+//            memberB.setMembername("memberB");
+//            memberB.setAge(30);
+//            memberB.setType(MemberType.USER);
+//            memberB.setTeam(teamB);
+//            em.persist(memberB);
 
-
-            String membername = "kim";
-            if (membername != null) {
-                criteriaQuery = criteriaQuery.where(criteriaBuilder.equal(m.get("membername"), "memberA"));
-            }
-
-            List<Member> members = em.createQuery(criteriaQuery).getResultList();
 
             System.out.println("====================");
-            for (Member mem : members) {
-                System.out.println("Member= " + mem);
-            }
+            System.out.println(em.find(Member.class, 1L));
+//            String query = "select m.membername from Member m where m.type= jpql.MemberType.ADMIN";
+//            List<Object[]> result = em.createQuery(query).getResultList();
+//            System.out.println("Member= "+result.get(0));
             System.out.println("====================");
 
-            tx.commit();
         } catch (Exception e) {
+            e.printStackTrace();
+
             tx.rollback();
         } finally {
             em.close();
@@ -58,5 +62,3 @@ public class JpaMain {
         emf.close();
     }
 }
-
-

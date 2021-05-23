@@ -4,16 +4,18 @@ import lombok.Data;
 
 import javax.persistence.*;
 
-@Entity @Data @Table(name = "ORDERS")
+@Entity @Data
+@Table(name = "ORDERS")
 public class Order {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int orderAmount;
     @Embedded
     private Address address;
 
-    @ManyToOne @JoinColumn(name = "PRODUCT_ID")
+    @ManyToOne
+    @JoinColumn(name = "PRODUCT_ID")
     private Product product;
-
 
 }

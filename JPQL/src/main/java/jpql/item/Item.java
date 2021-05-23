@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 public abstract class Item {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
 
     private String name;
