@@ -11,7 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Timestamp;
 
-@Entity @Getter @Setter
+@Entity
+@Getter
+@Setter
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +22,7 @@ public class User {
     private String password;
     private String email;
     private String role;
+    private Timestamp loginDate;
 
     @CreationTimestamp
     private Timestamp createDate;
