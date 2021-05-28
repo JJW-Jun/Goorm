@@ -14,7 +14,7 @@ spring:
   mvc:
     view:
       prefix: /WEB-INF/views/
-      # 어떻게 응답을 하겠다.
+#       어떻게 응답을 하겠다.
       suffix: .jsp
 
   datasource:
@@ -23,17 +23,16 @@ spring:
     username: jun
     password: *
 
-
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: true
 
-  security:
-    user:
-      name: test
-      password: 1234
+#  security:
+#    user:
+#      name: test
+#      password: 1234
 
 
 
