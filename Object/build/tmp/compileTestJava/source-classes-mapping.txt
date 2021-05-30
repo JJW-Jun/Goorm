@@ -1,2 +1,0 @@
-chapter01/refactoring/case1/TicketOfficeTest.java
- chapter01.refactoring.case1.TicketOfficeTest
