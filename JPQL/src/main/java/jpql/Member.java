@@ -4,7 +4,6 @@ import jpql.item.Company;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,18 +23,17 @@ public class Member {
 
     private int age;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "TEAM_ID")
+    @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "TEAM_ID")
     private Team team;
 
     @Enumerated(EnumType.STRING)
     private MemberType type;
 
-//    @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "COMPANY_ID")
-//    private Company company;
-//
-//    @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "FAMILY_ID")
-//    private Family family;
+    @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "COMPANY_ID")
+    private Company company;
+
+    @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "FAMILY_ID")
+    private Family family;
 
     public void changeTeam(Team team) {
         this.team = team;

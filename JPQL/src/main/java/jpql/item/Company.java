@@ -18,6 +18,6 @@ public class Company {
 
     private String name;
 
-//    @OneToMany(mappedBy = "company")
-//    private List<Member> members = new ArrayList<>();
+    @OneToMany(mappedBy = "company")
+    private List<Member> members = new ArrayList<>();
 }

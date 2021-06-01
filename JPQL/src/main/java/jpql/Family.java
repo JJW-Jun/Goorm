@@ -17,6 +17,6 @@ public class Family {
     private String name;
     private int count;
 
-//    @OneToMany(mappedBy = "family")
-//    private List<Member> members = new ArrayList<>();
+    @OneToMany(mappedBy = "family")
+    private List<Member> members = new ArrayList<>();
 }
