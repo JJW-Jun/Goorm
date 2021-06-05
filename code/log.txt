@@ -1,0 +1,14 @@
+Jun 04, 2021 6:27:14 PM com.example.code.exception.MyLogger log
+FINEST: log test
+Jun 04, 2021 6:27:14 PM com.example.code.exception.MyLogger log
+FINER: log test
+Jun 04, 2021 6:27:14 PM com.example.code.exception.MyLogger log
+FINE: log test
+Jun 04, 2021 6:27:14 PM com.example.code.exception.MyLogger log
+CONFIG: log test
+Jun 04, 2021 6:27:14 PM com.example.code.exception.MyLogger log
+INFO: log test
+Jun 04, 2021 6:27:14 PM com.example.code.exception.MyLogger log
+WARNING: log test
+Jun 04, 2021 6:27:14 PM com.example.code.exception.MyLogger log
+SEVERE: log test
