@@ -1,18 +1,33 @@
 package etc;
 
-public class A {
-    public static void doIt(){
-        System.out.println("Parent method : A class method doIt");
+class Parent {
+    public static void doIt() {
+        System.out.println("Parent method : doIt");
     }
 
-    public void doThat(){
-        System.out.println("Parent method : A class method doThat");
+    public void doThat() {
+        System.out.println("Parent method : doThat");
     }
 }
 
 
-class A1 extends A{
-    public static void doit(){
-        System.out.println("");
+class Descendent extends Parent {
+    public static void doit() {
+        System.out.println("Descendent method : doIt");
+    }
+
+    public void doThat() {
+        System.out.println("Descendent method : doThat");
+    }
+}
+
+class Main2 {
+    public static void main(String args[]) {
+        Parent parent = new Descendent();
+        Descendent descendent = new Descendent();
+        parent.doIt();
+        parent.doThat();
+        descendent.doIt();
+
     }
 }

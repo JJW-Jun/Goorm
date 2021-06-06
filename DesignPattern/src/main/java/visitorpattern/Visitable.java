@@ -1,2 +1,6 @@
-package visitorpattern;public class Visitable {
+package visitorpattern;
+
+public interface Visitable {
+    public void accept(Visitor visitor);
+
 }
